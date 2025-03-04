@@ -1,7 +1,7 @@
-/* script.js */
+
 
 document.addEventListener("DOMContentLoaded", function () {
-    // 语言切换功能
+   
     const languageToggle = document.getElementById("language-toggle");
     let currentLanguage = "EN";
 

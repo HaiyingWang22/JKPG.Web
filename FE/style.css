@@ -1,6 +1,4 @@
-/* styles.css */
 
-/* 基础样式 */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,7 +7,7 @@ body {
     background-color: #f4f4f4;
 }
 
-/* 导航栏样式 */
+
 header {
     position: absolute;
     top: 0;
@@ -48,7 +46,7 @@ nav {
     font-weight: bold;
 }
 
-/* 欢迎横幅 */
+
 .hero {
     position: relative;
     height: 100vh;
