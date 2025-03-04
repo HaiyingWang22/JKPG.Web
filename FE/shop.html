@@ -19,25 +19,19 @@
         </nav>
     </header>
     <section class="hero">
-        <img src="backgroundpic2.png" alt="Jönköping City Shopping" class="background-image">
-        <h1>SHOPPING</h1>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Search...">
-            <button id="search-button">🔍</button>
+        <div class="hero-content">
+            <h1>SHOPPING</h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">🔍</button>
+            </div>
         </div>
     </section>
     <main>
-        <section id="discover">
-            <h2>Discover Jönköping</h2>
-            <p>Explore the beautiful landscapes, lakes, and cultural attractions of Jönköping.</p>
-        </section>
-        <section id="info">
-            <h2>City Information</h2>
-            <p>Find useful details about transportation, accommodations, and local services.</p>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Reach out to our city office for inquiries and support.</p>
+        <section class="grid">
+            <div class="grid-item" onclick="handleClick(1)"></div>
+            <div class="grid-item" onclick="handleClick(2)"></div>
+            <!-- Add more grid items as needed -->
         </section>
     </main>
     <footer>
