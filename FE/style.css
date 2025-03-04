@@ -49,14 +49,18 @@ nav {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     color: white;
     text-align: center;
-    padding: 20px;
     background-image: url('backgroundpic2.png');
     background-size: cover;
     background-position: center;
+    z-index: 1; /* Ensure the background image is below the content */
+}
+
+.hero-text {
+    z-index: 2; /* Ensure the text is above the background image */
 }
 
 .hero h1 {
@@ -66,13 +70,17 @@ nav {
     margin-bottom: 20px;
 }
 
+.hero-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2; /* Ensure the content is above the background image */
+    margin-top: 20px; /* Add some space between the text and the search bar */
+}
+
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 20px;
-    margin-top: 20px;
 }
 
 #search-input {
@@ -97,6 +105,7 @@ nav {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
+    margin-top: 50px; /* Add some space between the hero section and the grid */
 }
 
 .grid-item {
@@ -104,6 +113,30 @@ nav {
     background-color: #d3d3d3;
     border: 1px solid #ccc;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-content h2 {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.item-content p {
+    font-size: 14px;
+    margin: 0;
 }
 
 footer {
