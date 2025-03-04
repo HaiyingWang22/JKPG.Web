@@ -34,3 +34,18 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#contact h2").textContent = "Contact Us";
     }
 });
+document.getElementById('search-button').addEventListener('click', function() {
+    const query = document.getElementById('search-input').value;
+    if (query) {
+        window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
+    }
+});
+
+document.getElementById('search-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        const query = event.target.value;
+        if (query) {
+            window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
+        }
+    }
+});

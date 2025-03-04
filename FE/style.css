@@ -49,36 +49,52 @@ nav {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 垂直居中 */
-    align-items: center; /* 水平居中 */
+    justify-content: center;
+    align-items: center;
     color: white;
     text-align: center;
     padding: 20px;
-    background-image: url('backgroundpic.png'); /* 设置背景图片 */
-    background-size: cover; /* 背景图片覆盖整个区域 */
-    background-position: center; /* 背景图片居中 */
+    background-image: url('backgroundpic2.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .hero h1 {
-    font-size: 36px; /* "WELCOME TO" 的字体大小 */
+    font-size: 48px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 10px; /* 控制两行之间的间距 */
-    position: relative; /* 确保文字在背景图片上层 */
-    z-index: 1; /* 确保文字在背景图片上层 */
+    margin-bottom: 20px;
 }
 
-.hero h1 span {
-    display: block;
-    font-size: 72px; /* "JÖNKÖPING CITY" 的字体大小 */
-    font-weight: 900; /* 超粗 */
-    position: relative; /* 确保文字在背景图片上层 */
-    z-index: 1; /* 确保文字在背景图片上层 */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 20px;
 }
 
-.hero p {
-    position: relative; /* 确保文字在背景图片上层 */
-    z-index: 1; /* 确保文字在背景图片上层 */
-    max-width: 800px; /* 控制段落宽度 */
-    margin: 0 auto; /* 水平居中 */
+#search-input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;
+    background-color: transparent;
+}
+
+#search-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
 }
