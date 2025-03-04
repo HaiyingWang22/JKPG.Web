@@ -69,3 +69,36 @@ document.getElementById('search-input').addEventListener('keypress', function(ev
         }
     }
 });
+
+//the form
+document.getElementById('store-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const storeData = {
+        name: document.querySelector('input[name="name"]').value,
+        url: document.querySelector('input[name="url"]').value,
+        district: document.querySelector('input[name="district"]').value
+    }
+})    
+
+function switchToSwedish() {
+    document.querySelector('h2').textContent = 'LÄGG TILL BUTIK';
+    document.querySelector('button[type="submit"]').textContent = 'SPARA BUTIK';
+    document.querySelector('label:nth-of-type(1)').textContent = 'NAMN';
+    document.querySelector('label:nth-of-type(2)').textContent = 'WEBBADRESS';
+    document.querySelector('label:nth-of-type(3)').textContent = 'OMRÅDE';
+    document.querySelectorAll('input')[0].placeholder = 'Butiksnamn';
+    document.querySelectorAll('input')[1].placeholder = 'https://exempel.se';
+    document.querySelectorAll('input')[2].placeholder = 'Ange område';
+}
+
+function switchToEnglish() {
+    document.querySelector('h2').textContent = 'ADD NEW STORE';
+    document.querySelector('button[type="submit"]').textContent = 'SAVE STORE';
+    document.querySelector('label:nth-of-type(1)').textContent = 'NAME';
+    document.querySelector('label:nth-of-type(2)').textContent = 'URL';
+    document.querySelector('label:nth-of-type(3)').textContent = 'DISTRICT';
+    document.querySelectorAll('input')[0].placeholder = 'Store name';
+    document.querySelectorAll('input')[1].placeholder = 'https://example.com';
+    document.querySelectorAll('input')[2].placeholder = 'Enter district';
+}
