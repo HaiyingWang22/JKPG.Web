@@ -1,10 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const Store = require('./storeModel');
 const app = express();
 const port = 8080;
 
 
 app.use(express.json());
+app.use(cors());//Allow cross-origin requests
 
 
 // get all stores
@@ -21,7 +23,7 @@ app.get('/api/stores', async (req, res) => {
 app.get('/api/store', async (req, res) => {
   try {
       const name = req.query.name;
-      const store = await Store.findOne({ name: new RegExp(name, 'i') });
+      const store = await Store.find({ name: new RegExp(name, 'i') });
       // use regular expression to prevent users from mistyping. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
 
       if (store) {
