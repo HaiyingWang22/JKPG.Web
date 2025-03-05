@@ -147,30 +147,30 @@ function renderStores() {
     addButtonListeners();
 }
 
-//delete and edit buttons
-function addButtonListeners() {
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const id = parseInt(this.dataset.id);
-            stores = stores.filter(store => store.id !== id);
-            renderStores();
-        });
-    });
+// //delete and edit buttons
+// function addButtonListeners() {
+//     document.querySelectorAll('.delete-btn').forEach(btn => {
+//         btn.addEventListener('click', function() {
+//             const id = parseInt(this.dataset.id);
+//             stores = stores.filter(store => store.id !== id);
+//             renderStores();
+//         });
+//     });
 
-    document.querySelectorAll('.edit-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const id = parseInt(this.dataset.id);
-            const store = stores.find(store => store.id === id);
+//     document.querySelectorAll('.edit-btn').forEach(btn => {
+//         btn.addEventListener('click', function() {
+//             const id = parseInt(this.dataset.id);
+//             const store = stores.find(store => store.id === id);
             
-            document.querySelector('input[name="name"]').value = store.name;
-            document.querySelector('input[name="url"]').value = store.url;
-            document.querySelector('input[name="district"]').value = store.district;
+//             document.querySelector('input[name="name"]').value = store.name;
+//             document.querySelector('input[name="url"]').value = store.url;
+//             document.querySelector('input[name="district"]').value = store.district;
             
-            //remove the original entry
-            stores = stores.filter(store => store.id !== id);
-            renderStores();
-        });
-    });
-}
+//             //remove the original entry
+//             stores = stores.filter(store => store.id !== id);
+//             renderStores();
+//         });
+//     });
+// }
 
 renderStores();
