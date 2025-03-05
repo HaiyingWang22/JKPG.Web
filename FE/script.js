@@ -34,52 +34,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#contact h2").textContent = "Contact Us";
     }
 });
-// document.getElementById('search-button').addEventListener('click', function() {
-//     const query = document.getElementById('search-input').value;
-//     if (query) {
-//         window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
-//     }
-// });
 
-// document.getElementById('search-input').addEventListener('keypress', function(event) {
-//     if (event.key === 'Enter') {
-//         const query = event.target.value;
-//         if (query) {
-//             window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
-//         }
-//     }
-// });
 function handleClick(index) {
     console.log(`Clicked on item ${index}`);
-    // Add your click handling logic here
+  
 }
 
-// document.getElementById('search-button').addEventListener('click', function() {
-//     const query = document.getElementById('search-input').value;
-//     if (query) {
-//         window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
-//     }
-// });
-
-// document.getElementById('search-input').addEventListener('keypress', function(event) {
-//     if (event.key === 'Enter') {
-//         const query = event.target.value;
-//         if (query) {
-//             window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
-//         }
-//     }
-// });
-
-// //the form
-// document.getElementById('store-form').addEventListener('submit', function(e) {
-//     e.preventDefault();
-    
-//     const storeData = {
-//         name: document.querySelector('input[name="name"]').value,
-//         url: document.querySelector('input[name="url"]').value,
-//         district: document.querySelector('input[name="district"]').value
-//     }
-// })    
+ 
 
 function switchToSwedish() {
     document.querySelector('h2').textContent = 'LÄGG TILL BUTIK';
@@ -147,30 +108,6 @@ function renderStores() {
     addButtonListeners();
 }
 
-// //delete and edit buttons
-// function addButtonListeners() {
-//     document.querySelectorAll('.delete-btn').forEach(btn => {
-//         btn.addEventListener('click', function() {
-//             const id = parseInt(this.dataset.id);
-//             stores = stores.filter(store => store.id !== id);
-//             renderStores();
-//         });
-//     });
 
-//     document.querySelectorAll('.edit-btn').forEach(btn => {
-//         btn.addEventListener('click', function() {
-//             const id = parseInt(this.dataset.id);
-//             const store = stores.find(store => store.id === id);
-            
-//             document.querySelector('input[name="name"]').value = store.name;
-//             document.querySelector('input[name="url"]').value = store.url;
-//             document.querySelector('input[name="district"]').value = store.district;
-            
-//             //remove the original entry
-//             stores = stores.filter(store => store.id !== id);
-//             renderStores();
-//         });
-//     });
-// }
 
 renderStores();
