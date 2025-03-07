@@ -6,7 +6,7 @@
     <title>Shop Management</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="settings">
     <header>
         <nav>
             <div class="logo" href="index.html">jkpgcity.</div>
@@ -29,34 +29,51 @@
               <button id="search-button">🔍</button>
           </div>
       </div>
-  </section>
+    </section>
   
-<main class="shop-management">
-  <div class="store-creation">
-      <h2>ADD NEW STORE</h2>
-      <form id="store-form">
-          <div class="form-group">
-              <label>Name</label>
-              <input type="text" name="name" placeholder="Store name" required>
-          </div>
-          
-          <div class="form-group">
-              <label>URL</label>
-              <input type="url" name="url" placeholder="https://example.com" required>
-          </div>
-          
-          <div class="form-group">
-              <label>District</label>
-              <input type="text" name="district" placeholder="Enter district" required>
-          </div>
-          
-          <button type="submit">SAVE STORE</button>
-      </form>
-  </div>
-</main>
+    <main class="shop-management">
+        <div class="store-creation">
+            <h2>ADD NEW STORE</h2>
+            <form id="store-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Store name" >
+                </div>
+                
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="url" name="url" placeholder="https://example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>District</label>
+                    <input type="text" name="district" placeholder="Enter district">
+                </div>
+                
+                <button type="submit">SAVE STORE</button>
+            </form>
+            
+        </div>
+        <section class="grid" id="setting">
+            <!-- example template code(don't delete) -->
+            <!-- <a href="example.html" class="grid-item">
+                <div class="item-content">
+                    <h2>Example Name</h2>
+                    <p>Region example </p>
+                    <button class="editBtn">edit</button>
+                    <button class="deleteBtn">delete</button>
+                </div>
+                <div class="Btn-block">
+                    <button class="deleteBtn">delete</button>
+                    <button class="editBtn">edit</button>
+                </div>
+            </a> -->
+        </section>
+    </main>
 
-<section class="store-list"></section>
+    <section class="store-list"></section>
 
     <script src="script.js"></script>
+    <script type="module" src="Js/main.js"></script>
 </body>
 </html>

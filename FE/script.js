@@ -65,49 +65,49 @@ function switchToEnglish() {
 }
 
 //store list
-let stores = [];
+// let stores = [];
 //form submission
-document.getElementById('store-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+// document.getElementById('store-form').addEventListener('submit', function(e) {
+//     e.preventDefault();
     
-    const storeData = {
-        id: Date.now(), //ID for each store based on the time
-        name: document.querySelector('input[name="name"]').value,
-        url: document.querySelector('input[name="url"]').value,
-        district: document.querySelector('input[name="district"]').value
-    };
+//     const storeData = {
+//         id: Date.now(), //ID for each store based on the time
+//         name: document.querySelector('input[name="name"]').value,
+//         url: document.querySelector('input[name="url"]').value,
+//         district: document.querySelector('input[name="district"]').value
+//     };
 
-    stores.push(storeData);
-    renderStores();
-    this.reset();
-});
+//     stores.push(storeData);
+//     renderStores();
+//     this.reset();
+// });
 
 //render store cards
-function renderStores() {
-    const storeList = document.querySelector('.store-list');
-    storeList.innerHTML = '';
+// function renderStores() {
+//     const storeList = document.querySelector('.store-list');
+//     storeList.innerHTML = '';
     
-    stores.forEach(store => {
-        const storeCard = document.createElement('div');
-        storeCard.className = 'store-card';
-        storeCard.innerHTML = `
-            <div class="store-info">
-                <h3>${store.name}</h3>
-                <p>URL: <a href="${store.url}" target="_blank">${store.url}</a></p>
-                <p>District: ${store.district}</p>
-            </div>
-            <div class="store-actions">
-                <button class="action-btn edit-btn" data-id="${store.id}">Edit</button>
-                <button class="action-btn delete-btn" data-id="${store.id}">Delete</button>
-            </div>
-        `;
+//     stores.forEach(store => {
+//         const storeCard = document.createElement('div');
+//         storeCard.className = 'store-card';
+//         storeCard.innerHTML = `
+//             <div class="store-info">
+//                 <h3>${store.name}</h3>
+//                 <p>URL: <a href="${store.url}" target="_blank">${store.url}</a></p>
+//                 <p>District: ${store.district}</p>
+//             </div>
+//             <div class="store-actions">
+//                 <button class="action-btn edit-btn" data-id="${store.id}">Edit</button>
+//                 <button class="action-btn delete-btn" data-id="${store.id}">Delete</button>
+//             </div>
+//         `;
         
-        storeList.appendChild(storeCard);
-    });
+//         storeList.appendChild(storeCard);
+//     });
 
-    addButtonListeners();
-}
+//     addButtonListeners();
+// }
 
 
 
-renderStores();
+// renderStores();

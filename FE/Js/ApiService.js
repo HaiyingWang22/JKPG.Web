@@ -16,14 +16,13 @@ export class ApiService {
             }
         } catch (error) {
             console.error("API data retrieval error:", error);
-            return [];
         }
     }
 
     // get store by name
-    async searchData(query) {
+    async searchData(endpoint,query) {
         try {
-            const response = await fetch(`${this.requestUrl}/api/store?name=${encodeURIComponent(query)}`, {
+            const response = await fetch(`${this.requestUrl}${endpoint}${encodeURIComponent(query)}`, {
                 method: "GET"
             });
             if (response.ok) {
@@ -33,7 +32,54 @@ export class ApiService {
             }
         } catch (error) {
             console.error("Data retrieval error:", error);
-            return [];
+        }
+    }
+
+    // post new store
+    async postData(endpoint, data) {
+        try {
+            const response = await fetch(`${this.requestUrl}${endpoint}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"  
+                },
+                body: JSON.stringify(data) 
+            });
+            if (response.ok) {
+                return await response.json();
+            }else{
+                throw new Error(`Request failed: ${response.status}`);
+            }
+            
+        } catch (error) {
+            console.error("Post data error:", error);
+        }
+    }
+
+    // delete store
+    async deleteData(endpoint, storeId) {
+        console.log(`🚀 Sending DELETE request to: ${this.requestUrl}${endpoint}`);
+        console.log(`🗑️ Deleting store ID: ${storeId}`);
+
+        try {
+            const response = await fetch(`${this.requestUrl}${endpoint}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id: storeId }) 
+            });
+
+            if (response.ok) {
+                return await response.json();
+            }else{
+                throw new Error(`Request failed: ${response.status}`);
+            }
+            
+        } catch (error) {
+            console.error("Post data error:", error);
         }
     }
 }
+
+

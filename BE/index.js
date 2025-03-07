@@ -55,7 +55,8 @@ app.delete('/api/stores', async (req, res) => {
 // change store by id
 app.patch('/api/stores', async (req, res) => {
   try {
-    const { id, ...updateFields } = req.body;//...updateFields contains random content that may be name, url or just url
+    //...updateFields contains random content that may be name and url or just name
+    const { id, ...updateFields } = req.body;
     if (!id) {
       return res.status(400).json({ message: "miss store id" });
     }else{
