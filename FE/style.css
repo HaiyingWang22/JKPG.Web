@@ -345,3 +345,18 @@ button[type="submit"]:hover {
 .edit-button:hover {
     background-color: #218838; 
 }
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #34495e;
+}
