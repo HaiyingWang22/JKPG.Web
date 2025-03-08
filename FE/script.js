@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
    
     const languageToggle = document.getElementById("language-toggle");

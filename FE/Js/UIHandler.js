@@ -8,7 +8,7 @@ export class UIHandler {
     async renderData(dataArray,page) {
         try{
             this.container.innerHTML = ""; 
-
+            // store card
             dataArray.forEach(item => {
                 const link = document.createElement("a");
                 if (item.url!==null && item.url!==undefined){
@@ -46,12 +46,15 @@ export class UIHandler {
                 });
     
                 if (page === "edit") {
+
+                    // edit & delete Btn
                     const content = document.createElement("div");
-                    content.classList.add("Btn-block");
-                    const deleteButton = document.createElement("button");
-                    deleteButton.textContent = "delete";
-                    deleteButton.classList.add("deleteBtn");
-                    deleteButton.onclick = (event) => {
+                    content.classList.add("Button-block");
+
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.textContent = "delete";
+                    deleteBtn.classList.add("deleteBtn");
+                    deleteBtn.onclick = (event) => {
                         event.preventDefault();
                         const isDeleted = this.deleteStore(item._id);
                         if (isDeleted) {
@@ -61,14 +64,86 @@ export class UIHandler {
                             alert("Failed to delete store. Please try again!");
                         }
                     };
-    
-                    const editButton = document.createElement("button");
-                    editButton.textContent = "edit";
-                    editButton.classList.add("editBtn");
-    
-                    content.appendChild(deleteButton);
-                    content.appendChild(editButton);
+
+                    const editBtn = document.createElement("button");
+                    editBtn.textContent = "edit";
+                    editBtn.classList.add("editBtn");
+                    editBtn.onclick = (event) => {
+                        event.preventDefault();
+                        editForm.style.display = "block"; 
+                        submitBtn.style.display = "block";
+                    };
+
+                    // establish a parent-child relationship
+                    content.appendChild(deleteBtn);
+                    content.appendChild(editBtn);
                     link.appendChild(content);
+                    
+
+                    
+                    // updating form
+                    const content2 = document.createElement("div");
+                    content2.classList.add("store-setting");
+
+                    const editForm = document.createElement("form");
+                    editForm.classList.add("edit-form");
+                    editForm.addEventListener("click", (event) => {
+                        event.preventDefault(); 
+                    });
+                    
+                    editForm.style.display = "none"; 
+
+                    const nameInput = document.createElement("input");
+                    nameInput.type = "text";
+                    nameInput.value = item.name;
+                    nameInput.placeholder = "Enter new name";
+
+                    const urlInput = document.createElement("input");
+                    urlInput.type = "text";
+                    urlInput.value = item.url;
+                    urlInput.placeholder = "Enter new URL";
+
+                    const districtInput = document.createElement("input");
+                    districtInput.type = "text";
+                    districtInput.value = item.district;
+                    districtInput.placeholder = "Enter new district";
+
+                    const submitBtn = document.createElement("button");
+                    submitBtn.textContent = "Save";
+                    submitBtn.style.display = "none"; 
+
+                    submitBtn.onclick = async (event) => {
+                        event.preventDefault();
+                        const updatedData = {
+                            id: item._id, 
+                            name: nameInput.value,
+                            url: urlInput.value,
+                            district: districtInput.value
+                        };
+                    
+                        try {
+                            const isUpdated = await this.updateStore(updatedData);
+                            if (isUpdated) {
+                                alert("Store updated successfully!");
+                                title.textContent = updatedData.name; 
+                                region.textContent = updatedData.district; 
+                                editForm.style.display = "none";
+                                submitBtn.style.display = "none";
+                            } else {
+                                alert("Failed to update store!");
+                            }
+                        } catch (error) {
+                            console.error("Error updating store:", error);
+                        }
+                    };
+                    
+
+                    editForm.appendChild(nameInput);
+                    editForm.appendChild(urlInput);
+                    editForm.appendChild(districtInput);
+                    content2.appendChild(editForm);
+                    content2.appendChild(submitBtn);
+                    link.appendChild(content2);
                 }
             });
         }catch (error) {
@@ -80,12 +155,32 @@ export class UIHandler {
         try {
             console.log("Clicked delete button for store:", storeId);
             const response = await this.apiService.deleteData("/api/stores",storeId);
+            return true; 
         } catch (error) {
             console.error("❌ Error deleting store:", error);
+            return false; 
         }
-
     }
 
+    // Call updateData to update info
+    async updateStore(updatedData) {
+        try {
+            const response = await this.apiService.updateData("/api/stores", updatedData);
+    
+            if (response) {
+                console.log("Store updated successfully");
+                return true; 
+            } else {
+                console.error("Failed to update store:", response ? response.message : "No response");
+                return false; 
+            }
+
+        } catch (error) {
+            console.error("Error updating store:", error);
+            return false;
+        }
+    }
+    
 }
 
 

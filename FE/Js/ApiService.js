@@ -55,11 +55,10 @@ export class ApiService {
             console.error("Post data error:", error);
         }
     }
+    
 
     // delete store
     async deleteData(endpoint, storeId) {
-        console.log(`🚀 Sending DELETE request to: ${this.requestUrl}${endpoint}`);
-        console.log(`🗑️ Deleting store ID: ${storeId}`);
 
         try {
             const response = await fetch(`${this.requestUrl}${endpoint}`, {
@@ -78,6 +77,30 @@ export class ApiService {
             
         } catch (error) {
             console.error("Post data error:", error);
+        }
+    }
+
+    // update store
+    async updateData(endpoint, updatedData) {
+       
+
+        try {
+            const response = await fetch(`${this.requestUrl}${endpoint}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedData)
+            });
+
+            if (response.ok) {
+                return await response.json();
+            }else{
+                throw new Error(`Request failed: ${response.status}`);
+            }
+        } catch (error) {
+            console.error("❌ Update data error:", error);
+            return null;
         }
     }
 }
