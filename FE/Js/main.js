@@ -21,12 +21,12 @@ async function loadEdit() {
 
 // Call searchData to get store
 async function  searchByName() {
-    const query = searchQuery.value; 
-    if (!query) {
+    const queryContent = searchQuery.value; 
+    if (!queryContent) {
         alert("Search content cannot be empty!");
         return;
     }
-    const searchResult = await apiService.searchData("/api/store?name=",query);
+    const searchResult = await apiService.searchData("/api/store?name=",queryContent);
     if (pageId === "allStores"){
         uiHandlerStores.renderData(searchResult,"storesPage");
     }else if(pageId === "settings"){
@@ -36,7 +36,6 @@ async function  searchByName() {
 }
 
 searchButton.addEventListener("click",  (event) => {
-    event.preventDefault(); // Prevent form submitting automatically
     searchByName();
 });
 
@@ -45,9 +44,6 @@ searchButton.addEventListener("click",  (event) => {
 if(pageId === "settings"){
     const storeForm = document.getElementById("store-form");
     storeForm.addEventListener("submit", async function (event) {
-        
-        // event.preventDefault();
-
         const formData = new FormData(storeForm);
         const storeData = {
             name: formData.get("name"),         
@@ -58,11 +54,10 @@ if(pageId === "settings"){
             alert("Name cannot be empty!");
             return;
         }else{
-            
             try {
                 const response = await apiService.postData("/api/stores",storeData);
                 if (response) {
-                    alert("✅ Store added successfully!");
+                    alert("Store added successfully!");
                     storeForm.reset(); // clean form
                 } else {
                     alert(" Failed to add store. Please try again.");

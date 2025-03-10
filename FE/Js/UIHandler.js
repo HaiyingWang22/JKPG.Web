@@ -21,11 +21,11 @@ export class UIHandler {
                     link.href = item.url;
                 } 
                 link.classList.add("grid-item");
+                link.dataset.id = item._id;
     
                 const content = document.createElement("div");
                 content.classList.add("item-content");
                 content.id = `${item._id}`;
-                link.dataset.id = item._id;
     
                 const title = document.createElement("h2");
                 title.textContent = item.name;
@@ -38,12 +38,6 @@ export class UIHandler {
                 content.appendChild(region);
                 link.appendChild(content);
                 this.container.appendChild(link);
-
-                link.addEventListener("click", (event) => {
-                    if (event.target.tagName === "deleteBtn") {
-                        event.preventDefault(); 
-                    }
-                });
     
                 if (page === "edit") {
 
@@ -52,7 +46,7 @@ export class UIHandler {
                     content.classList.add("Button-block");
 
                     const deleteBtn = document.createElement("button");
-                    deleteBtn.textContent = "delete";
+                    deleteBtn.textContent = "Delete";
                     deleteBtn.classList.add("deleteBtn");
                     deleteBtn.onclick = (event) => {
                         event.preventDefault();
@@ -66,7 +60,7 @@ export class UIHandler {
                     };
 
                     const editBtn = document.createElement("button");
-                    editBtn.textContent = "edit";
+                    editBtn.textContent = "Edit";
                     editBtn.classList.add("editBtn");
                     editBtn.onclick = (event) => {
                         event.preventDefault();
@@ -87,9 +81,9 @@ export class UIHandler {
 
                     const editForm = document.createElement("form");
                     editForm.classList.add("edit-form");
-                    editForm.addEventListener("click", (event) => {
+                    editForm.onclick = (event) => {
                         event.preventDefault(); 
-                    });
+                    };
                     
                     editForm.style.display = "none"; 
 
@@ -147,17 +141,18 @@ export class UIHandler {
                 }
             });
         }catch (error) {
-            console.error("❌ Error deleting store:", error);
+            console.error("Error deleting store:", error);
         }
     }
-     // Call deleteData to delete store
+
+    // Call deleteData to delete store
     async deleteStore(storeId) {
         try {
             console.log("Clicked delete button for store:", storeId);
             const response = await this.apiService.deleteData("/api/stores",storeId);
             return true; 
         } catch (error) {
-            console.error("❌ Error deleting store:", error);
+            console.error("Error deleting store:", error);
             return false; 
         }
     }

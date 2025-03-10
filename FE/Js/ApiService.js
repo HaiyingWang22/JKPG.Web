@@ -5,6 +5,7 @@ export class ApiService {
 
     // get all stores
     async getData(endpoint) {
+
         try {
             const response = await fetch(`${this.requestUrl}${endpoint}`, {
                 method: "GET"
@@ -20,9 +21,10 @@ export class ApiService {
     }
 
     // get store by name
-    async searchData(endpoint,query) {
+    async searchData(endpoint,queryContent) {
+        
         try {
-            const response = await fetch(`${this.requestUrl}${endpoint}${encodeURIComponent(query)}`, {
+            const response = await fetch(`${this.requestUrl}${endpoint}${encodeURIComponent(queryContent)}`, {
                 method: "GET"
             });
             if (response.ok) {
@@ -37,6 +39,7 @@ export class ApiService {
 
     // post new store
     async postData(endpoint, data) {
+
         try {
             const response = await fetch(`${this.requestUrl}${endpoint}`, {
                 method: "POST",
@@ -76,13 +79,12 @@ export class ApiService {
             }
             
         } catch (error) {
-            console.error("Post data error:", error);
+            console.error("delete data error:", error);
         }
     }
 
     // update store
     async updateData(endpoint, updatedData) {
-       
 
         try {
             const response = await fetch(`${this.requestUrl}${endpoint}`, {
@@ -99,7 +101,7 @@ export class ApiService {
                 throw new Error(`Request failed: ${response.status}`);
             }
         } catch (error) {
-            console.error("❌ Update data error:", error);
+            console.error("Update data error:", error);
             return null;
         }
     }
