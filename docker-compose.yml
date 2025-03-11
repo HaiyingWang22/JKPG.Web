@@ -27,7 +27,7 @@ services:
     build:
       context: ./BE
       dockerfile: Dockerfile
-    container_name: node-api
+    container_name: node-BE
     ports:
       - "8080:8080"
     depends_on:

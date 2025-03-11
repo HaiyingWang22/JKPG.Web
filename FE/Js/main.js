@@ -78,4 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (pageId === "settings") {
         loadEdit();
     } 
+
 });
+
+
+
