@@ -1,11 +1,11 @@
 import { ApiService } from "./ApiService.js";
 import { UIHandler } from "./UIHandler.js";
 
-
-const pageId = document.body.id; 
 const apiService = new ApiService("http://localhost:8080");
 const uiHandlerStores = new UIHandler("stores");
 const uiHandlerStoreSetting = new UIHandler("setting");
+
+const pageId = document.body.id; 
 const searchQuery = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 

@@ -1,12 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const Store = require('./storeModel');
+require('dotenv').config();
+
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 
+// Middleware
 app.use(express.json());
-app.use(cors());//Allow cross-origin requests
+app.use(cors());//Allow cross-domain requests
 
 
 // get all stores
@@ -24,8 +27,8 @@ app.get('/api/store', async (req, res) => {
   try {
       const name = req.query.name;
       const store = await Store.find({ name: new RegExp(name, 'i') });
-      // use regular expression to prevent users from mistyping. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-
+      // use regular expression to prevent users from mistyping. 
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
       if (store) {
           res.json(store);
       } else {
@@ -80,17 +83,10 @@ app.post('/api/stores', async (req, res) => {
     const { name, url, district } = req.body;
     const newStore = new Store({ name, url, district });
     await newStore.save();
-    // res.json({ message: "successful add ", store: newStore });
     res.json({ message: "successful add "+newStore.name });
   } catch (err) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
-});
-
-
-app.use(function(err, req, res, next){
-  console.error('Error:', err);
-  res.status(500).json({ message: 'Internal Server Error' });
 });
 
 app.listen(port, () => {

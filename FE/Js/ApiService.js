@@ -100,6 +100,7 @@ export class ApiService {
             }else{
                 throw new Error(`Request failed: ${response.status}`);
             }
+            
         } catch (error) {
             console.error("Update data error:", error);
             return null;
